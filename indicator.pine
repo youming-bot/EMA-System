@@ -4,37 +4,37 @@
 // | Author:     um1ng (Optimized by Professional Trading Advisor)             |
 // | Version:    2.0                                                         |
 // |---------------------------------------------------------------------------|
-// | 这是一款经过优化的EMA系统指标。包含功能：                                  |
-// | 1. 多层EMA系统，用于趋势分析。                                             |
-// | 2. 基于最长EMA的趋势过滤器（背景颜色）。                                   |
-// | 3. 所有视觉元素（EMA线、背景）均可独立开关。                               |
+// | This is an optimized EMA system indicator with:                          |
+// | 1. Multi-layer EMA system for trend analysis.                            |
+// | 2. Trend filter based on the longest EMA (background color).             |
+// | 3. Independent toggles for all visuals (EMA lines, background).          |
 // -----------------------------------------------------------------------------
 
 indicator("EMA System (Optimized)", overlay=true, shorttitle="um1ng Pro Max Ultra")
 
 // —————————————————————————————————————————————————————————————————————————————
 // Section 1: User Inputs
-// 允许您轻松配置指标，无需修改代码。
+// Configure the indicator easily without editing code.
 // —————————————————————————————————————————————————————————————————————————————
-string_group_ema = "EMA 设置"
-ema_shorter_len = input.int(10, "较短线EMA", group=string_group_ema)
-ema_short_len = input.int(20, "短线EMA", group=string_group_ema)
-ema_long_len = input.int(50, "长线EMA", group=string_group_ema)
-ema_longer_len = input.int(100, "较长线EMA", group=string_group_ema)
-ema_holder_len = input.int(200, "趋势过滤EMA (Holder)", group=string_group_ema)
+string_group_ema = "EMA Parameters"
+ema_shorter_len = input.int(10, "10 EMA (Short-Term)", group=string_group_ema)
+ema_short_len = input.int(20, "20 EMA (Short-Term)", group=string_group_ema)
+ema_long_len = input.int(50, "50 EMA (Intermediate-Term)", group=string_group_ema)
+ema_longer_len = input.int(100, "100 EMA (Medium-Term)", group=string_group_ema)
+ema_holder_len = input.int(200, "200 EMA (Long-Term)", group=string_group_ema)
 
-string_group_display = "显示设置"
-show_ema_shorter = input.bool(true, "显示 较短线EMA", group=string_group_display)
-show_ema_short = input.bool(true, "显示 短线EMA", group=string_group_display)
-show_ema_long = input.bool(true, "显示 长线EMA", group=string_group_display)
-show_ema_longer = input.bool(true, "显示 较长线EMA", group=string_group_display)
-show_ema_holder = input.bool(true, "显示 趋势过滤EMA", group=string_group_display)
-show_trend_bg = input.bool(true, "显示 趋势背景颜色", group=string_group_display)
+string_group_display = "Display Options"
+show_ema_shorter = input.bool(true, "Show 10 EMA", group=string_group_display)
+show_ema_short = input.bool(true, "Show 20 EMA", group=string_group_display)
+show_ema_long = input.bool(true, "Show 50 EMA", group=string_group_display)
+show_ema_longer = input.bool(true, "Show 100 EMA", group=string_group_display)
+show_ema_holder = input.bool(true, "Show 200 EMA", group=string_group_display)
+show_trend_bg = input.bool(true, "Show Trend Regime Background", group=string_group_display)
 
 
 // —————————————————————————————————————————————————————————————————————————————
 // Section 2: Calculations
-// 此处完成所有必要的指标计算。
+// Perform all necessary indicator calculations here.
 // —————————————————————————————————————————————————————————————————————————————
 // EMA Calculations
 ema_shorter = ta.ema(close, ema_shorter_len)
@@ -43,20 +43,20 @@ ema_long = ta.ema(close, ema_long_len)
 ema_longer = ta.ema(close, ema_longer_len)
 ema_holder = ta.ema(close, ema_holder_len)
 
-// Condition for Trend Filter
+// Condition for Primary Trend Filter (200 EMA)
 is_uptrend = close > ema_holder
 
 
 // —————————————————————————————————————————————————————————————————————————————
 // Section 3: Plotting and Visuals
-// 此部分处理指标在图表上的显示方式。
+// Control how the indicator renders on the chart.
 // —————————————————————————————————————————————————————————————————————————————
 // Plot EMAs on the chart (with toggles)
-plot(show_ema_shorter ? ema_shorter : na, "Shorter EMA", color=color.new(color.green, 0))
-plot(show_ema_short ? ema_short : na, "Short EMA", color=color.new(color.orange, 0))
-plot(show_ema_long ? ema_long : na, "Long EMA", color=color.new(color.gray, 0))
-plot(show_ema_longer ? ema_longer : na, "Longer EMA", color=color.new(color.red, 0))
-plot(show_ema_holder ? ema_holder : na, "Holder EMA", color=color.new(color.white, 0), linewidth=2)
+plot(show_ema_shorter ? ema_shorter : na, "10 EMA", color=color.new(color.green, 0))
+plot(show_ema_short ? ema_short : na, "20 EMA", color=color.new(color.orange, 0))
+plot(show_ema_long ? ema_long : na, "50 EMA", color=color.new(color.gray, 0))
+plot(show_ema_longer ? ema_longer : na, "100 EMA", color=color.new(color.red, 0))
+plot(show_ema_holder ? ema_holder : na, "200 EMA", color=color.new(color.white, 0), linewidth=2)
 
-// Trend Filter: Change background color based on the main trend (with toggle)
-bgcolor(show_trend_bg and is_uptrend ? color.new(color.green, 90) : show_trend_bg ? color.new(color.red, 90) : na, title="Trend Background")
+// Trend Filter: Regime background keyed to the 200 EMA (with toggle)
+bgcolor(show_trend_bg and is_uptrend ? color.new(color.green, 90) : show_trend_bg ? color.new(color.red, 90) : na, title="Trend Regime Background")

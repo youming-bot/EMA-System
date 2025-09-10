@@ -1,41 +1,43 @@
 # EMA System Indicator
 
-一个优化的EMA系统指标，专为TradingView平台设计。
+An optimized EMA system indicator designed for the TradingView platform.
 
-## 功能特性
+## Features
 
-- **多层EMA系统**: 包含5条不同周期的EMA线（10、20、50、100、200周期）
-- **趋势过滤器**: 基于200周期EMA的趋势背景颜色显示
-- **可定制显示**: 每条EMA线和趋势背景均可独立开关
+- Multi-EMA framework (10/20/50/100/200) for multi-horizon trend assessment
+- Trend regime filter: background based on the 200 EMA (long-term trend)
+- Customizable display: toggle each EMA line and the regime background independently
 
-## 安装使用
+## Installation
 
-1. 在TradingView中打开"Pine编辑器"
-2. 复制`indicator.pine`文件内容
-3. 粘贴到编辑器中并保存
-4. 将指标添加到图表
+1. Open the "Pine Editor" in TradingView
+2. Copy the contents of `indicator.pine`
+3. Paste into the editor and save
+4. Add the indicator to your chart
 
-## 参数设置
+## Settings
 
-### EMA设置
-- **较短线EMA**: 10周期EMA（默认）
-- **短线EMA**: 20周期EMA（默认）
-- **长线EMA**: 50周期EMA（默认）
-- **较长线EMA**: 100周期EMA（默认）
-- **趋势过滤EMA**: 200周期EMA（趋势判断基准）
+### EMA Parameters
 
-### 显示设置
-- 可单独控制每条EMA线的显示/隐藏
-- 可开关趋势背景颜色显示
+- 10 EMA (Short-Term): 10-period EMA (default)
+- 20 EMA (Short-Term): 20-period EMA (default)
+- 50 EMA (Intermediate-Term): 50-period EMA (default)
+- 100 EMA (Medium-Term): 100-period EMA (default)
+- 200 EMA (Long-Term, Trend Filter): 200-period EMA (baseline)
 
-## 使用说明
+### Display Options
 
-- **多头趋势**: 价格位于200周期EMA上方，背景显示绿色
-- **空头趋势**: 价格位于200周期EMA下方，背景显示红色
-- **EMA排列**: 短期EMA在长期EMA上方为多头排列，反之为空头排列
+- Independently toggle visibility for each EMA line
+- Toggle the trend regime background on/off
 
-## 版本信息
+## Usage
 
-- **版本**: 2.0
-- **作者**: um1ng
-- **语言**: Pine Script v5
+- Bullish regime: Price above the 200 EMA; background fills green
+- Bearish regime: Price below the 200 EMA; background fills red
+- EMA stack alignment: Faster EMAs (10/20) above slower EMAs (50/100/200) supports bullish bias, and vice versa
+
+## Version
+
+- Version: 2.0
+- Author: um1ng
+- Language: Pine Script v5

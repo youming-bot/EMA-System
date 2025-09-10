@@ -17,11 +17,11 @@ indicator("EMA System (Optimized)", overlay=true, shorttitle="um1ng Pro Max Ultr
 // Configure the indicator easily without editing code.
 // —————————————————————————————————————————————————————————————————————————————
 string_group_ema = "EMA Parameters"
-ema_shorter_len = input.int(10, "10 EMA (Short-Term)", group=string_group_ema)
-ema_short_len = input.int(20, "20 EMA (Short-Term)", group=string_group_ema)
-ema_long_len = input.int(50, "50 EMA (Intermediate-Term)", group=string_group_ema)
-ema_longer_len = input.int(100, "100 EMA (Medium-Term)", group=string_group_ema)
-ema_holder_len = input.int(200, "200 EMA (Long-Term)", group=string_group_ema)
+ema_shorter_len = input.int(10, "10 EMA (Shorter)", group=string_group_ema)
+ema_short_len = input.int(20, "20 EMA (Short)", group=string_group_ema)
+ema_long_len = input.int(50, "50 EMA (long)", group=string_group_ema)
+ema_longer_len = input.int(100, "100 EMA (longer)", group=string_group_ema)
+ema_holder_len = input.int(200, "200 EMA (holder)", group=string_group_ema)
 
 string_group_display = "Display Options"
 show_ema_shorter = input.bool(true, "Show 10 EMA", group=string_group_display)

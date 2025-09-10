@@ -1,43 +1,59 @@
-# EMA System Indicator
+# EMA System (TradingView)
 
-An optimized EMA system indicator designed for the TradingView platform.
+Optimized multi-EMA indicator for TradingView (Pine Script v5). It plots five EMAs and an optional trend regime background keyed to the 200 EMA for clean, multi-horizon trend assessment.
 
-## Features
+## Key Features
 
-- Multi-EMA framework (10/20/50/100/200) for multi-horizon trend assessment
-- Trend regime filter: background based on the 200 EMA (long-term trend)
-- Customizable display: toggle each EMA line and the regime background independently
+- Five EMAs: 10, 20, 50, 100, 200
+- Regime background driven by the 200 EMA
+- Independent toggles for each EMA and the background
+- Lightweight visuals; designed to overlay price
 
-## Installation
+## Quick Start
 
-1. Open the "Pine Editor" in TradingView
-2. Copy the contents of `indicator.pine`
-3. Paste into the editor and save
-4. Add the indicator to your chart
+1. In TradingView, open the Pine Editor.
+2. Copy the contents of `indicator.pine` from this repo.
+3. Paste into the editor, save, and name it (e.g., "EMA System (Optimized)").
+4. Click "Add to chart".
+5. Open the indicator Settings to customize inputs and display.
 
-## Settings
+## Inputs
 
 ### EMA Parameters
 
-- 10 EMA (Short-Term): 10-period EMA (default)
-- 20 EMA (Short-Term): 20-period EMA (default)
-- 50 EMA (Intermediate-Term): 50-period EMA (default)
-- 100 EMA (Medium-Term): 100-period EMA (default)
-- 200 EMA (Long-Term, Trend Filter): 200-period EMA (baseline)
+- 10 EMA (Shorter): default 10
+- 20 EMA (Short): default 20
+- 50 EMA (Long): default 50
+- 100 EMA (Longer): default 100
+- 200 EMA (Holder): default 200
 
 ### Display Options
 
-- Independently toggle visibility for each EMA line
-- Toggle the trend regime background on/off
+- Show 10/20/50/100/200 EMA: toggle each line on/off
+- Show Trend Regime Background: color the chart background by 200 EMA trend
 
-## Usage
+## How To Read
 
-- Bullish regime: Price above the 200 EMA; background fills green
-- Bearish regime: Price below the 200 EMA; background fills red
-- EMA stack alignment: Faster EMAs (10/20) above slower EMAs (50/100/200) supports bullish bias, and vice versa
+- Bullish regime: close above 200 EMA (green background)
+- Bearish regime: close below 200 EMA (red background)
+- Alignment: faster EMAs (10/20) above slower EMAs (50/100/200) supports a bullish bias, and vice versa
+
+## Tips
+
+- Consider higher timeframe confirmation for trend context.
+- Adjust background strength via the indicator's Style transparency if needed.
+- This is not financial advice; use with a risk-managed plan.
 
 ## Version
 
 - Version: 2.0
+- File: `indicator.pine`
 - Author: um1ng
 - Language: Pine Script v5
+
+## Changelog
+
+- 2.0
+  - Grouped inputs for clarity (EMA Parameters, Display Options)
+  - Independent toggle for trend regime background
+  - Color and plotting refinements
